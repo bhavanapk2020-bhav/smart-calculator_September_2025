@@ -12,8 +12,6 @@ class Standard:
 
             print(sum(args))
 
-        repeat_1()
-
     def subtraction(self, *args : int | float):
 
         diff = args[0]
@@ -29,10 +27,7 @@ class Standard:
         else:
 
             print(diff)
-
-        repeat_1()
-
-
+            
     def multiplication(self, *args : int | float):
 
         product = 1
@@ -48,10 +43,7 @@ class Standard:
         else:
 
             print(product)
-
-        repeat_1()
-
-
+            
     def division(self, *args : int | float):
 
         quotient = args[0]
@@ -67,10 +59,7 @@ class Standard:
         else:
 
             print(quotient)
-
-        repeat_1()
-
-
+            
 st_ob = Standard()
 
 class Conversion:
@@ -81,7 +70,7 @@ class Conversion:
 
         print(f"{from_val} centimeters = {to_val} meters")
 
-        repeat_2()
+        repeat_3()
 
     def m_cm(self, from_val):
 
@@ -89,7 +78,7 @@ class Conversion:
 
         print(f"{from_val} meters = {to_val} centimeters")
 
-        repeat_2()
+        repeat_3()
 
 
     def cm_inch(self, from_val):
@@ -98,7 +87,7 @@ class Conversion:
 
         print(f"{from_val} centimeters = {to_val} inches")
 
-        repeat_2()
+        repeat_3()
 
     def inch_cm(self, from_val):
 
@@ -106,7 +95,7 @@ class Conversion:
 
         print(f"{from_val} inches = {to_val} centimeters")
 
-        repeat_2()
+        repeat_3()
 
     def km_m(self, from_val):
 
@@ -114,7 +103,7 @@ class Conversion:
 
         print(f"{from_val} kilometers = {to_val} meters")
 
-        repeat_2()
+        repeat_3()
 
     def m_km(self, from_val):
 
@@ -122,7 +111,7 @@ class Conversion:
 
         print(f"{from_val} meters = {to_val} kilometers")
 
-        repeat_2()
+        repeat_3()
 
     
     def km_miles(self, from_val):
@@ -131,7 +120,7 @@ class Conversion:
 
         print(f"{from_val} kilometers = {to_val} miles")
 
-        repeat_2()
+        repeat_3()
 
     
     def miles_km(self, from_val):
@@ -140,7 +129,7 @@ class Conversion:
 
         print(f"{from_val} miles = {to_val} kilometers")
 
-        repeat_2()
+        repeat_3()
 
     
     def m_feet(self, from_val):
@@ -149,7 +138,7 @@ class Conversion:
 
         print(f"{from_val} meters = {to_val} feet")
 
-        repeat_2()
+        repeat_3()
 
     
     def feet_m(self, from_val):
@@ -158,7 +147,7 @@ class Conversion:
 
         print(f"{from_val} meters = {to_val} centimeters")
 
-        repeat_2()
+        repeat_3()
 
 convert = Conversion()
 
@@ -189,6 +178,22 @@ def repeat_2():
     elif rpt == "no" or rpt == "n" :
 
         main_ob.menu()
+
+    else:
+
+        exit()
+
+def repeat_3():
+
+    rpt = input("Do you want to continue ? (YES / NO)").lower()
+
+    if rpt == "yes" or rpt == "y":
+
+        main_ob.conversion()
+
+    elif rpt == "no" or rpt == "n" :
+
+        main_ob.scientific()
 
     else:
 
@@ -235,9 +240,12 @@ class Main:
 
                 st_ob.addition(*numbers)
 
+                repeat_1()
+
             except ValueError:
 
                 print("Enter a valid number")
+
                 self.operations()
 
         elif op == "2" or op == "subtraction":
@@ -249,6 +257,8 @@ class Main:
                 numbers = list(map(float,num.split()))
                     
                 st_ob.subtraction(*numbers)
+
+                repeat_1()
 
             except ValueError:
 
@@ -266,6 +276,8 @@ class Main:
                     
                 st_ob.multiplication(*numbers)
 
+                repeat_1()
+
             except ValueError:
 
                 print("Enter a valid number")
@@ -281,6 +293,8 @@ class Main:
                 numbers = list(map(float,num.split()))
                     
                 st_ob.division(*numbers)
+
+                repeat_1()
 
             except ValueError:
 
@@ -472,9 +486,10 @@ class Main:
             if c_type == "6":
 
                 main_ob.conversion()
+
         if conv == 9:
 
-            main_ob.menu()
+            main_ob.scientific()
 
     def tri(self,ang_val):
 
@@ -497,7 +512,7 @@ class Main:
 
     def scientific(self):
 
-        print("1.Arithmetic Operations\n2.Trigonometric functions\n3.Square root\n4.Unit Conversion\n5.Power\n6.Logarithms\n7.Circle Operations\n8.Exponentials\n9.Factorial\n10.Angle conversion\n11.Scientific Notation\n12.Go Back")
+        print("1.Arithmetic Operations\n2.Trigonometric functions\n3.Square root\n4.Unit Conversion\n5.Power\n6.Logarithms\n7.Circle Operations\n8.Exponentials\n9.Factorial\n10.Angle conversion\n11.Go Back")
         try :
             
             option = int(input("Enter the serial number of the options : "))
@@ -525,21 +540,9 @@ class Main:
                 elif ang != "degree" or ang != "radian":
 
                     print("Invalid Input")
-
-                choice = input("Do you want to continue ? (Yes / No)").lower()
-
-                if choice == "yes" or choice == "y":
-
-                    main_ob.scientific()
-
-                elif choice == "no" or choice == "n":
-
-                    main_ob.main()
-
-                else:
-
-                    print("Invalid input")
-
+                    
+                repeat_2()
+                
             elif option == 3:
 
                 val = int(input("Enter the value :"))
@@ -558,11 +561,15 @@ class Main:
 
                 print(f"{val} raised to {power} = {val ** power} ")
 
+                repeat_2()
+
             elif option == 6:
 
                 val = int(input("Enter the value : "))
 
                 print(f"Log of {val} = {math.log(val)}")
+
+                repeat_2()
 
             elif option == 7:
 
@@ -572,6 +579,7 @@ class Main:
 
                 print(f"Circumference / Perimeter = { 2 * math.pi * rad}")
 
+                repeat_2()
 
             elif option == 8:
 
@@ -579,11 +587,15 @@ class Main:
 
                 print(f"e raised to {val} = {math.exp(val)}")
 
+                repeat_2()
+
             elif option == 9:
 
                 number = int(input("Enter the number : "))
 
-                print(f"Factorial = {main_ob.factorial(number)  }")             
+                print(f"Factorial = {main_ob.factorial(number)  }")  
+                
+                repeat_2()           
 
             elif option == 10:
 
@@ -606,12 +618,10 @@ class Main:
                     print("Invalid Input")
 
                     main_ob.scientific()
+                
+                repeat_2()
 
             elif option == 11:
-
-                pass
-
-            elif option == 12:
 
                 self.menu()
 
