@@ -1,4 +1,6 @@
-class Arithmetic:
+import math
+
+class Standard:
 
     def addition(self, *args : int | float):
 
@@ -69,7 +71,7 @@ class Arithmetic:
         repeat_1()
 
 
-ar_ob = Arithmetic()
+st_ob = Standard()
 
 class Conversion:
 
@@ -79,11 +81,16 @@ class Conversion:
 
         print(f"{from_val} centimeters = {to_val} meters")
 
+        repeat_2()
+
     def m_cm(self, from_val):
 
         to_val = from_val * 100
 
         print(f"{from_val} meters = {to_val} centimeters")
+
+        repeat_2()
+
 
     def cm_inch(self, from_val):
 
@@ -91,11 +98,15 @@ class Conversion:
 
         print(f"{from_val} centimeters = {to_val} inches")
 
+        repeat_2()
+
     def inch_cm(self, from_val):
 
         to_val = from_val * 2.54
 
         print(f"{from_val} inches = {to_val} centimeters")
+
+        repeat_2()
 
     def km_m(self, from_val):
 
@@ -103,11 +114,15 @@ class Conversion:
 
         print(f"{from_val} kilometers = {to_val} meters")
 
+        repeat_2()
+
     def m_km(self, from_val):
 
         to_val = from_val * 0.001
 
         print(f"{from_val} meters = {to_val} kilometers")
+
+        repeat_2()
 
     
     def km_miles(self, from_val):
@@ -116,12 +131,16 @@ class Conversion:
 
         print(f"{from_val} kilometers = {to_val} miles")
 
+        repeat_2()
+
     
     def miles_km(self, from_val):
 
         to_val = from_val * 1.60934
 
         print(f"{from_val} miles = {to_val} kilometers")
+
+        repeat_2()
 
     
     def m_feet(self, from_val):
@@ -130,6 +149,8 @@ class Conversion:
 
         print(f"{from_val} meters = {to_val} feet")
 
+        repeat_2()
+
     
     def feet_m(self, from_val):
 
@@ -137,15 +158,7 @@ class Conversion:
 
         print(f"{from_val} meters = {to_val} centimeters")
 
-
-
-
-    
-
-
-
-
-
+        repeat_2()
 
 convert = Conversion()
 
@@ -171,7 +184,7 @@ def repeat_2():
 
     if rpt == "yes" or rpt == "y":
 
-        main_ob.conversion()
+        main_ob.scientific()
 
     elif rpt == "no" or rpt == "n" :
 
@@ -186,23 +199,29 @@ class Main:
 
         print("Welcome to smart calculator")  
 
-        choice = int(input("Arithmetic Operation (Please enter 1 to select)\nUnit conversion (Please enter 2 to select)\n(To exit from the program type 0)\nPlease select :  "))
+        mode = int(input("standard (Please enter 1 to select)\nscientific (Please enter 2 to select)\n(To exit from the program type 0)\nPlease select :  "))
 
-        if choice == 0:
+        if mode == 0:
 
             exit()
 
-        elif choice == 1:
+        elif mode == 1:
 
             main_ob.operations()
 
-        elif choice == 2:
+        elif mode == 2:
 
-            main_ob.conversion()
+            main_ob.scientific()
+
+        else:
+
+            print("Invalid Input")
+
+            main_ob.menu()
 
     def operations(self):
 
-        print("1.ADDITION\n2.SUBTRACTION\n3.MULTIPLICATION\n4.DIVISION")
+        print("1.ADDITION\n2.SUBTRACTION\n3.MULTIPLICATION\n4.DIVISION\n5.Go Back")
 
         op = input("Enter the operation to be performed : ").lower()
 
@@ -214,11 +233,12 @@ class Main:
 
                 numbers = list(map(float,num.split()))
 
-                ar_ob.addition(*numbers)
+                st_ob.addition(*numbers)
 
             except ValueError:
 
                 print("Enter a valid number")
+                self.operations()
 
         elif op == "2" or op == "subtraction":
 
@@ -228,11 +248,13 @@ class Main:
 
                 numbers = list(map(float,num.split()))
                     
-                ar_ob.subtraction(*numbers)
+                st_ob.subtraction(*numbers)
 
             except ValueError:
 
                 print("Enter a valid number")
+
+                self.operations()
 
         elif op == "3" or op == "multiplication":
 
@@ -242,11 +264,13 @@ class Main:
 
                 numbers = list(map(float,num.split()))
                     
-                ar_ob.multiplication(*numbers)
+                st_ob.multiplication(*numbers)
 
             except ValueError:
 
                 print("Enter a valid number")
+
+                self.operations()
 
         elif op == "4" or op == "division":
 
@@ -256,11 +280,23 @@ class Main:
 
                 numbers = list(map(float,num.split()))
                     
-                ar_ob.division(*numbers)
+                st_ob.division(*numbers)
 
             except ValueError:
 
                 print("Enter a valid number")
+
+                self.operations()
+
+            except ZeroDivisionError:
+
+                print("Division by zero is not possible")
+
+                self.operations()
+
+        elif op == "5" or op == "go back":
+
+            main_ob.menu()
 
         else:
 
@@ -270,13 +306,13 @@ class Main:
 
     def conversion(self):
 
-        print("1.LENGTH\n2.MASS/WEIGHT\n3.TEMPERATURE\n4.TIME\n5.VOLUME\n6.ENERGY\n7.DIGITAL STORAGE\n8.SPEED")
+        print("1.LENGTH\n2.MASS/WEIGHT\n3.TEMPERATURE\n4.TIME\n5.VOLUME\n6.ENERGY\n7.DIGITAL STORAGE\n8.SPEED\n9.GO BACK")
 
         conv = input("Enter the category : ").lower()
 
         if conv == "length" or conv == "1":
 
-            c_type = input(("1. Centimeter to meter\n\n2. Meter to Centimetern\n3. Centimeter to Inches\n\n4. Inches to Centimeter\n\n5. Kilometer to Meter\n\n6. Meters to Kilometer\n\n7. Kilometer to Miles\n\n8. Miles to Kilometer\n\n9. Meter to Feet\n\n10. Feet to Meter\n\n\nSelect the conversion type: "))
+            c_type = input(("1. Centimeter to meter\n\n2. Meter to Centimetern\n3. Centimeter to Inches\n\n4. Inches to Centimeter\n\n5. Kilometer to Meter\n\n6. Meters to Kilometer\n\n7. Kilometer to Miles\n\n8. Miles to Kilometer\n\n9. Meter to Feet\n\n10. Feet to Meter\n11.Go Back\n\n\nSelect the conversion type: "))
 
             if c_type == "1":
 
@@ -286,11 +322,12 @@ class Main:
 
                     convert.cm_m(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "2":
 
@@ -300,11 +337,12 @@ class Main:
 
                     convert.m_cm(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "3":
 
@@ -314,11 +352,12 @@ class Main:
 
                     convert.cm_inch(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "4":
 
@@ -328,11 +367,12 @@ class Main:
 
                     convert.inch_cm(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "5":
 
@@ -342,11 +382,12 @@ class Main:
 
                     convert.km_m(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "6":
 
@@ -356,11 +397,12 @@ class Main:
 
                     convert.m_km(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "7":
 
@@ -370,11 +412,12 @@ class Main:
 
                     convert.km_miles(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "8":
 
@@ -384,11 +427,12 @@ class Main:
 
                     convert.miles_km(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "9":
 
@@ -398,11 +442,12 @@ class Main:
 
                     convert.m_feet(f_val)
 
-                    repeat_2()
 
                 except ValueError:
 
                     print("Invalid input")
+
+                    self.conversion()
 
             elif c_type == "10":
 
@@ -410,7 +455,9 @@ class Main:
 
                 convert.feet_m(f_val)
 
-                repeat_2()
+            elif c_type == "11":
+
+                main_ob.conversion()
 
             else:
 
@@ -420,25 +467,118 @@ class Main:
 
         if conv == "mass/weight" or conv == "2":
 
-            c_type = input(("1. Kilograms to Grams\n\n2. Pounds to Kilograms\n3. Grams to Ounces\n\n4. Kilograms to Ounces\n\n5. Pounds to Grams\n\n\nSelect the conversion type: "))
+            c_type = input(("1. Kilograms to Grams\n\n2. Pounds to Kilograms\n3. Grams to Ounces\n\n4. Kilograms to Ounces\n\n5. Pounds to Grams\n6.GO BACK\n\n\nSelect the conversion type: "))
 
-            if c_type == "1":
+            if c_type == "6":
 
-                try:
+                main_ob.conversion()
+        if conv == 9:
 
-                    f_val = int(input("Enter the value in centimeters : "))
+            main_ob.menu()
 
-                    convert.cm_m(f_val)
+    def tri(self,ang_val):
 
-                    repeat_2()
+        print(f" Sin {math.degrees(ang_val)} degrees / {ang_val} radians = {math.sin(ang_val)}\n")
 
-                except ValueError:
+        print(f" Cos {math.degrees(ang_val)} degrees / {ang_val} radians = {math.cos(ang_val)}\n")
+
+        print(f" Tan {math.degrees(ang_val)} degrees / {ang_val} radians = {math.tan(ang_val)}\n")
+
+
+    def scientific(self):
+
+        print("1.Arithmetic Operations\n2.Trigonometric functions\n3.Square root\n4.Unit Conversion\n5.Pwer\n6.Logarithms\n7.Constants\n8.Exponentials\n9.Factorial\n10.Angle conversion\n11.Scientific Notation\n12.Go Back")
+        try :
+            
+            option = int(input("Enter the serial number of the options : "))
+
+            if option == 1:
+
+                main_ob.operations()
+
+            elif option == 2:
+
+                ang = input("Degree or Radian ?").lower()
+
+                value = float(input("Enter the value / angle : "))
+
+                if ang == "degree":
+
+                    value = math.radians(value)
+
+                    main_ob.tri(value)
+
+                elif ang == "radian":
+
+                    main_ob.tri(value)
+
+                elif ang != "degree" or ang != "radian":
+
+                    print("Invalid Input")
+
+                choice = input("Do you want to continue ? (Yes / No)").lower()
+
+                if choice == "yes" or choice == "y":
+
+                    main_ob.scientific()
+
+                elif choice == "no" or choice == "n":
+
+                    main_ob.main()
+
+                else:
 
                     print("Invalid input")
 
+            elif option == 3:
 
+                pass
 
+            elif option == 4:
 
+                main_ob.conversion()
+
+            elif option == 5:
+
+                pass
+
+            elif option == 6:
+
+                pass
+
+            elif option == 7:
+
+                pass
+
+            elif option == 8:
+
+                pass
+
+            elif option == 9:
+
+                pass
+
+            elif option == 10:
+
+                pass
+
+            elif option == 11:
+
+                pass
+
+            elif option == 12:
+
+                self.scientific()
+
+            else:
+                print("Invalid input")
+
+                main_ob.scientific()
+        except:
+
+            print("Invalid input")
+
+            main_ob.scientific()     
 
 main_ob = Main()
 
