@@ -292,7 +292,7 @@ class Main:
 
                 print("Division by zero is not possible")
 
-                self.operations()
+                repeat_1()
 
         elif op == "5" or op == "go back":
 
@@ -484,10 +484,20 @@ class Main:
 
         print(f" Tan {math.degrees(ang_val)} degrees / {ang_val} radians = {math.tan(ang_val)}\n")
 
+    def factorial(self,num):
+
+        if num == 1 or num == 0:
+
+            return 1
+
+        else:
+
+            return num * self.factorial(num - 1)
+
 
     def scientific(self):
 
-        print("1.Arithmetic Operations\n2.Trigonometric functions\n3.Square root\n4.Unit Conversion\n5.Pwer\n6.Logarithms\n7.Constants\n8.Exponentials\n9.Factorial\n10.Angle conversion\n11.Scientific Notation\n12.Go Back")
+        print("1.Arithmetic Operations\n2.Trigonometric functions\n3.Square root\n4.Unit Conversion\n5.Power\n6.Logarithms\n7.Circle Operations\n8.Exponentials\n9.Factorial\n10.Angle conversion\n11.Scientific Notation\n12.Go Back")
         try :
             
             option = int(input("Enter the serial number of the options : "))
@@ -532,7 +542,9 @@ class Main:
 
             elif option == 3:
 
-                pass
+                val = int(input("Enter the value :"))
+
+                print(f"Square root of {val} = {math.sqrt(val)}")
 
             elif option == 4:
 
@@ -540,27 +552,60 @@ class Main:
 
             elif option == 5:
 
-                pass
+                val = int(input("Enter the value : "))
+
+                power = int(input("Power value : "))
+
+                print(f"{val} raised to {power} = {val ** power} ")
 
             elif option == 6:
 
-                pass
+                val = int(input("Enter the value : "))
+
+                print(f"Log of {val} = {math.log(val)}")
 
             elif option == 7:
 
-                pass
+                rad = float(input("Enter the radius : "))
+
+                print(f"Area = {math.pi * (rad ** rad)} ")
+
+                print(f"Circumference / Perimeter = { 2 * math.pi * rad}")
+
 
             elif option == 8:
 
-                pass
+                val = float(input("Enter the value : "))
+
+                print(f"e raised to {val} = {math.exp(val)}")
 
             elif option == 9:
 
-                pass
+                number = int(input("Enter the number : "))
+
+                print(f"Factorial = {main_ob.factorial(number)  }")             
 
             elif option == 10:
 
-                pass
+                val = int(input("Choose the serial number : \n1. Degree -> Radian\n2. Radian -> Degree"))
+
+                if val == 1:
+
+                    ang = float(input("Enter the value : "))
+
+                    print(f"{math.radians(ang)} radians")
+
+                elif val == 2:
+
+                    ang = float(input("Enter the value : "))
+
+                    print(f"{math.degrees(ang)} degrees")
+
+                else:
+
+                    print("Invalid Input")
+
+                    main_ob.scientific()
 
             elif option == 11:
 
@@ -568,7 +613,7 @@ class Main:
 
             elif option == 12:
 
-                self.scientific()
+                self.menu()
 
             else:
                 print("Invalid input")
