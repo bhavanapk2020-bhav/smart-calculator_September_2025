@@ -145,7 +145,47 @@ class Conversion:
 
         to_val = from_val * 0.3048
 
-        print(f"{from_val} meters = {to_val} centimeters")
+        print(f"{from_val} feet = {to_val} meters")
+
+        repeat_3()
+
+    def kg_g(self, from_val):
+
+        to_val = from_val * 1000
+
+        print(f"{from_val} kg = {to_val} g")
+
+        repeat_3()
+
+    def p_kg(self, from_val):
+
+        to_val = from_val * 0.453592
+
+        print(f"{from_val} lb = {to_val} kg")
+
+        repeat_3()
+
+    def g_ounce(self, from_val):
+
+        to_val = from_val * 0.035274
+
+        print(f"{from_val} g = {to_val} oz")
+
+        repeat_3()
+
+    def kg_ounce(self, from_val):
+
+        to_val = from_val * 35.274
+
+        print(f"{from_val} kg = {to_val} oz")
+
+        repeat_3()
+
+    def p_g(self, from_val):
+
+        to_val = from_val * 453.592
+
+        print(f"{from_val} lb = {to_val} kg")
 
         repeat_3()
 
@@ -204,7 +244,7 @@ class Main:
 
         print("Welcome to smart calculator")  
 
-        mode = int(input("standard (Please enter 1 to select)\nscientific (Please enter 2 to select)\n(To exit from the program type 0)\nPlease select :  "))
+        mode = int(input("Standard Calculator (Please enter 1 to select)\nScientific Calculator (Please enter 2 to select)\n(To exit from the program type 0)\nPlease select :  "))
 
         if mode == 0:
 
@@ -234,7 +274,7 @@ class Main:
 
             try:
 
-                num = input("Enter the numbers to be added seperated by space : ")
+                num = input("Enter the numbers to be added, seperated by space : ")
 
                 numbers = list(map(float,num.split()))
 
@@ -252,7 +292,7 @@ class Main:
 
             try:
 
-                num = input("Enter the numbers to be subtracted seperated by space : ")
+                num = input("Enter the numbers to be subtracted, seperated by space : ")
 
                 numbers = list(map(float,num.split()))
                     
@@ -270,7 +310,7 @@ class Main:
 
             try:
 
-                num = input("Enter the numbers to be multiplied seperated by space : ")
+                num = input("Enter the numbers to be multiplied, seperated by space : ")
 
                 numbers = list(map(float,num.split()))
                     
@@ -288,7 +328,7 @@ class Main:
 
             try:
 
-                num = input("Enter the numbers to be divided seperated by space : ")
+                num = input("Enter the numbers to be divided seperated, by space : ")
 
                 numbers = list(map(float,num.split()))
                     
@@ -479,25 +519,106 @@ class Main:
 
                 main_ob.conversion()
 
-        if conv == "mass/weight" or conv == "2":
+        elif conv == "mass/weight" or conv == "2":
 
             c_type = input(("1. Kilograms to Grams\n\n2. Pounds to Kilograms\n3. Grams to Ounces\n\n4. Kilograms to Ounces\n\n5. Pounds to Grams\n6.GO BACK\n\n\nSelect the conversion type: "))
 
-            if c_type == "6":
+            if c_type == "1":
+
+                try:
+
+                    f_val = float(input("Enter the value in Kilograms : "))
+
+                    convert.kg_g(f_val)
+
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "2":
+
+                try:
+
+                    f_val = float(input("Enter the value in Pounds : "))
+
+                    convert.p_kg(f_val)
+
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "3":
+
+                try:
+
+                    f_val = float(input("Enter the value in Grams : "))
+
+                    convert.g_ounce(f_val)
+
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "4":
+
+                try:
+
+                    f_val = float(input("Enter the value in Kilograms : "))
+
+                    convert.kg_ounce(f_val)
+
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "5":
+
+                try:
+
+                    f_val = float(input("Enter the value in Pounds : "))
+
+                    convert.p_g(f_val)
+
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "6":
 
                 main_ob.conversion()
 
-        if conv == 9:
+            else:
 
-            main_ob.scientific()
+                print("Invalid Input")
+
+                main_ob.conversion()
+
+        elif conv == 9:
+
+            main_ob.conversion()
 
     def tri(self,ang_val):
 
-        print(f" Sin {math.degrees(ang_val)} degrees / {ang_val} radians = {math.sin(ang_val)}\n")
+        print(f" Sin {math.degrees(ang_val)} degrees or {ang_val} radians = {math.sin(ang_val)}\n")
 
-        print(f" Cos {math.degrees(ang_val)} degrees / {ang_val} radians = {math.cos(ang_val)}\n")
+        print(f" Cos {math.degrees(ang_val)} degrees or {ang_val} radians = {math.cos(ang_val)}\n")
 
-        print(f" Tan {math.degrees(ang_val)} degrees / {ang_val} radians = {math.tan(ang_val)}\n")
+        print(f" Tan {math.degrees(ang_val)} degrees or {ang_val} radians = {math.tan(ang_val)}\n")
 
     def factorial(self,num):
 
@@ -541,11 +662,11 @@ class Main:
 
                     print("Invalid Input")
                     
-                repeat_2()
+                repeat_3()
                 
             elif option == 3:
 
-                val = int(input("Enter the value :"))
+                val = floatnt(input("Enter the value :"))
 
                 print(f"Square root of {val} = {math.sqrt(val)}")
 
@@ -555,9 +676,9 @@ class Main:
 
             elif option == 5:
 
-                val = int(input("Enter the value : "))
+                val = float(input("Enter the value : "))
 
-                power = int(input("Power value : "))
+                power = float(input("Power value : "))
 
                 print(f"{val} raised to {power} = {val ** power} ")
 
@@ -565,7 +686,7 @@ class Main:
 
             elif option == 6:
 
-                val = int(input("Enter the value : "))
+                val = float(input("Enter the value : "))
 
                 print(f"Log of {val} = {math.log(val)}")
 
