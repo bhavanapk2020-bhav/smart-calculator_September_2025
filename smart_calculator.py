@@ -360,7 +360,7 @@ class Main:
 
     def conversion(self):
 
-        print("1.LENGTH\n2.MASS/WEIGHT\n3.TEMPERATURE\n4.TIME\n5.VOLUME\n6.ENERGY\n7.DIGITAL STORAGE\n8.SPEED\n9.GO BACK")
+        print("1.LENGTH\n2.MASS/WEIGHT\n3.TEMPERATURE\n4. GO BACK")
 
         conv = input("Enter the category : ").lower()
 
@@ -608,9 +608,118 @@ class Main:
 
                 main_ob.conversion()
 
-        elif conv == 9:
+        elif conv == "temperature" or conv == "3":
 
-            main_ob.conversion()
+            c_type = input(("1. Celcius to Fahrenheit\n\n2. Fahrenheit to Celcius \n3. Celcius to Kelvin\n\n4. Kelvin to Celcius\n\n5. Fahrenheit to Kelvin\n6.Kelvin to Fahrenheit\n\n\nSelect the conversion type: "))
+
+            if c_type == "1":
+
+                try:
+
+                    f_val = float(input("Enter the value in Celcius : "))
+
+                    print(f"{(f_val * 9/5) + 32} F")
+
+                    repeat_3()
+
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "2":
+
+                try:
+
+                    f_val = float(input("Enter the value in Farenheit : "))
+
+                    print(f"{(f_val - 32) * 5/9} C")
+
+                    repeat_3()
+
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "3":
+
+                try:
+
+                    f_val = float(input("Enter the value in Celcius : "))
+
+                    print(f"{f_val + 273.15} K")
+
+                    repeat_3()
+
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "4":
+
+                try:
+
+                    f_val = float(input("Enter the value in Kelvin : "))
+
+                    print(f"{f_val - 273.15} C")
+
+                    repeat_3()
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "5":
+
+                try:
+
+                    f_val = float(input("Enter the value in Fahrenheit : "))
+
+                    print(f"{(f_val - 32) * 5/9 + 273.15} K")
+
+                    repeat_3()
+
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+
+            elif c_type == "6":
+
+                try:
+
+                    f_val = float(input("Enter the value in Kelvin : "))
+
+                    print(f"{(f_val - 273.15) * 9/5 + 32} F")
+
+                    repeat_3()
+                    
+                except ValueError:
+
+                    print("Invalid input")
+
+                    self.conversion()
+            else:
+
+                print("Invalid Input")
+
+                main_ob.conversion()
+
+
+        if conv == "go back" or conv == "4":
+
+            main_ob.scientific()
 
     def tri(self,ang_val):
 
