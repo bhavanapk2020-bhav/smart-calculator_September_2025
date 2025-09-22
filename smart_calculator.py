@@ -4,7 +4,7 @@ class Standard:
 
     def addition(self, *args : int | float):
 
-        if sum(args).is_integer:
+        if sum(args).is_integer():
 
             print(int(sum(args)))
         
