@@ -771,13 +771,15 @@ class Main:
 
                     print("Invalid Input")
                     
-                repeat_3()
+                repeat_2()
                 
             elif option == 3:
 
-                val = floatnt(input("Enter the value :"))
+                val = int(input("Enter the value :"))
 
                 print(f"Square root of {val} = {math.sqrt(val)}")
+
+                repeat_2()
 
             elif option == 4:
 
@@ -785,9 +787,9 @@ class Main:
 
             elif option == 5:
 
-                val = float(input("Enter the value : "))
+                val = int(input("Enter the value : "))
 
-                power = float(input("Power value : "))
+                power = int(input("Power value : "))
 
                 print(f"{val} raised to {power} = {val ** power} ")
 
@@ -795,7 +797,7 @@ class Main:
 
             elif option == 6:
 
-                val = float(input("Enter the value : "))
+                val = int(input("Enter the value : "))
 
                 print(f"Log of {val} = {math.log(val)}")
 
